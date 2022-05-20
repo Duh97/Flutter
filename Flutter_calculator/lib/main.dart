@@ -119,7 +119,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('C',const Color(0xffa5a5a5)), // AARRGGBB
                 btn('+/-',const Color(0xffa5a5a5)),
                 btn('%',const Color(0xffa5a5a5)),
-                btn('/', Colors.orange),
+                btn('÷', Colors.orange),
               ],),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -181,11 +181,11 @@ class IosCloneCalcState extends State<IosCloneCalc> {
         finalResult = sub();
       } else if( preOpr == 'x') {
         finalResult = mul();
-      } else if( preOpr == '/') {
+      } else if( preOpr == '÷') {
         finalResult = div();
       }
 
-    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '/' || btnText == '=') {
+    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '÷' || btnText == '=') {
 
       if(numOne == 0) {
         numOne = double.parse(result);
@@ -199,7 +199,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
         finalResult = sub();
       } else if( opr == 'x') {
         finalResult = mul();
-      } else if( opr == '/') {
+      } else if( opr == '÷') {
         finalResult = div();
       }
       preOpr = opr;

@@ -1,9 +1,8 @@
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() => runApp(new IosCloneCalculator());
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget { //套用响應式框架
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,12 +15,13 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.resize(480, name: MOBILE),
             ResponsiveBreakpoint.autoScale(800, name: TABLET),
             ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-        ],
+          ],
           background: Container(color: Color(0xFFF5F5F5))),
       initialRoute: "/",
     );
   }
 }
+
 class IosCloneCalculator extends StatelessWidget {
 
   Widget build(BuildContext buildcx) {
@@ -119,7 +119,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('C',const Color(0xffa5a5a5)), // AARRGGBB
                 btn('+/-',const Color(0xffa5a5a5)),
                 btn('%',const Color(0xffa5a5a5)),
-                btn('÷', Colors.orange),
+                btn('/', Colors.orange),
               ],),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -181,11 +181,11 @@ class IosCloneCalcState extends State<IosCloneCalc> {
         finalResult = sub();
       } else if( preOpr == 'x') {
         finalResult = mul();
-      } else if( preOpr == '÷') {
+      } else if( preOpr == '/') {
         finalResult = div();
       }
 
-    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '÷' || btnText == '=') {
+    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '/' || btnText == '=') {
 
       if(numOne == 0) {
         numOne = double.parse(result);
@@ -199,7 +199,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
         finalResult = sub();
       } else if( opr == 'x') {
         finalResult = mul();
-      } else if( opr == '÷') {
+      } else if( opr == '/') {
         finalResult = div();
       }
       preOpr = opr;

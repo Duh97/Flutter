@@ -38,7 +38,7 @@ class IosCloneCalc extends StatefulWidget {
 }
 
 class IosCloneCalcState extends State<IosCloneCalc> {
-
+  //先設定計算器邏輯中所需要的變數
   dynamic text ='0';
   double numOne = 0;
   double numTwo = 0;
@@ -52,7 +52,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
 
   Widget btn(btnText, Color color) {
     return Container(
-        padding: EdgeInsets.only(bottom: 10.0),
+        padding: EdgeInsets.only(bottom: 10.0),//讓全部按鈕間隔看起來更平均
         child: new RaisedButton(
             child: Text(btnText,
               style: TextStyle(
@@ -64,15 +64,15 @@ class IosCloneCalcState extends State<IosCloneCalc> {
             },
             color: color,
             padding: EdgeInsets.all(22.0),
-            shape: CircleBorder()
+            shape: CircleBorder() //為一個圓形按鈕
 
         )
     );
   } // end of button
 
-  Widget btnZero(btnText, Color color) {
+  Widget btnZero(btnText, Color color) { //按鈕0專屬設定
     return Container(
-        padding: EdgeInsets.only(bottom: 10.0),
+        padding: EdgeInsets.only(bottom: 10.0),//讓按鈕間隔看起來更平均
         child: new RaisedButton(
             child: Text(btnText,
               style: TextStyle(
@@ -83,8 +83,8 @@ class IosCloneCalcState extends State<IosCloneCalc> {
               calculation(btnText);
             },
             color: color,
-            padding: EdgeInsets.only(left:81 ,top:20,right:81,bottom: 20),
-            shape: StadiumBorder()
+            padding: EdgeInsets.only(left:85 ,top:20,right:85,bottom: 20),//調整按鈕0大小
+            shape: StadiumBorder()//邊界
 
         )
     );
@@ -97,7 +97,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
       body: Container(
         margin: EdgeInsets.only(bottom: 20.0),
         child: new Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,//將列主軸為中心點，垂直對齊
           children: <Widget>[
             Row(children: <Widget>[
               Expanded(
@@ -113,23 +113,23 @@ class IosCloneCalcState extends State<IosCloneCalc> {
               )
             ],
             ),
-            Row(
+            Row(//第一行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                btn('C',const Color(0xffa5a5a5)),
+                btn('AC',const Color(0xffa5a5a5)),//組合式AARRGGBB
                 btn('+/-',const Color(0xffa5a5a5)),
                 btn('%',const Color(0xffa5a5a5)),
                 btn('÷', Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Row(//第二行
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly, //水平對齊，不要讓按鈕擠在一起。
               children: <Widget>[
-                btn('7',const Color(0xff333333)),
+                btn('7',const Color(0xff333333)),//深灰色
                 btn('8',const Color(0xff333333)),
                 btn('9',const Color(0xff333333)),
                 btn('x',Colors.orange),
               ],),
-            Row(
+            Row(//第三行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 btn('4',const Color(0xff333333)),
@@ -137,7 +137,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('6',const Color(0xff333333)),
                 btn('-',Colors.orange),
               ],),
-            Row(
+            Row(//第四行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 btn('1',const Color(0xff333333)),
@@ -145,7 +145,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('3',const Color(0xff333333)),
                 btn('+',Colors.orange),
               ],),
-            Row(
+            Row(//第五行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 btnZero('0',const Color(0xff333333)),
@@ -164,7 +164,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
   void calculation(btnText) {
 
 
-    if(btnText  == 'C') {
+    if(btnText  == 'AC') {
       text ='0';
       numOne = 0;
       numTwo = 0;

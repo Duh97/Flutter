@@ -116,10 +116,10 @@ class IosCloneCalcState extends State<IosCloneCalc> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                btn('C',const Color(0xffa5a5a5)), // AARRGGBB
+                btn('C',const Color(0xffa5a5a5)),
                 btn('+/-',const Color(0xffa5a5a5)),
                 btn('%',const Color(0xffa5a5a5)),
-                btn('÷', Colors.orange),
+                btn('÷', Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -38,7 +38,7 @@ class IosCloneCalc extends StatefulWidget {
 }
 
 class IosCloneCalcState extends State<IosCloneCalc> {
-  //先設定計算器邏輯中所需要的變數
+  //先設定計算器邏輯中所需要的
   dynamic text ='0';
   double numOne = 0;
   double numTwo = 0;
@@ -60,7 +60,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
               ),
             ),
             onPressed: (){
-              calculation(btnText);
+              calculation(btnText);//這裡要調用最下面的計算方法
             },
             color: color,
             padding: EdgeInsets.all(22.0),
@@ -80,7 +80,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
               ),
             ),
             onPressed: (){
-              calculation(btnText);
+              calculation(btnText);//這裡要調用最下面的計算方法
             },
             color: color,
             padding: EdgeInsets.only(left:85 ,top:20,right:85,bottom: 20),//調整按鈕0大小
@@ -102,7 +102,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
             Row(children: <Widget>[
               Expanded(
                 child: Text(
-                  text,
+                  text,//這裡是零狀態顯示
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 60.0,
@@ -127,7 +127,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('7',const Color(0xff333333)),//深灰色
                 btn('8',const Color(0xff333333)),
                 btn('9',const Color(0xff333333)),
-                btn('x',Colors.orange),
+                btn('x',Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
             Row(//第三行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -135,7 +135,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('4',const Color(0xff333333)),
                 btn('5',const Color(0xff333333)),
                 btn('6',const Color(0xff333333)),
-                btn('-',Colors.orange),
+                btn('-',Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
             Row(//第四行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -143,14 +143,14 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('1',const Color(0xff333333)),
                 btn('2',const Color(0xff333333)),
                 btn('3',const Color(0xff333333)),
-                btn('+',Colors.orange),
+                btn('+',Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
             Row(//第五行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 btnZero('0',const Color(0xff333333)),
                 btn('.',const Color(0xff333333)),
-                btn('=',Colors.orange),
+                btn('=',Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
           ],
         ),
@@ -161,13 +161,15 @@ class IosCloneCalcState extends State<IosCloneCalc> {
 
 
 
-  void calculation(btnText) {
+  void calculation(btnText) { //這邊建立一個計算的方法
+                              //每當按下一次按鈕時，都會到這裡來計算
+                              //檢查這些計算條件，持續下降檢查
 
-
-    if(btnText  == 'AC') {
+    if(btnText  == 'AC') {    //當我按下每個按鈕，所有的值都會為默認值
       text ='0';
       numOne = 0;
       numTwo = 0;
+
       result = '';
       finalResult = '';
       opr = '';
@@ -184,13 +186,13 @@ class IosCloneCalcState extends State<IosCloneCalc> {
       } else if( preOpr == '÷') {
         finalResult = div();
       }
-
+      //當我按下"+"時，這個else if條件就會被執行，檢查是否等於"+"
     } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '÷' || btnText == '=') {
-
-      if(numOne == 0) {
+      //條件如果true，num第一次等於0，此條件就成立
+      if(numOne == 0) {//檢查是否到0
         numOne = double.parse(result);
       } else {
-        numTwo = double.parse(result);
+        numTwo = double.parse(result);//如果沒有，則numTwo將獲得結果值
       }
 
       if(opr == '+') {
@@ -208,7 +210,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
       }
       preOpr = opr;
       opr = btnText;
-      result = '';
+      result = '';//結果為空白
     }
     else if(btnText == '%') {
       result = numOne / 100;
@@ -239,7 +241,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
   }
 
 
-  String add() {
+  String add() {//當我按下第一個按鈕時+第二按鈕時，等於下去再一次等於時會再疊加上去
     result = (numOne + numTwo).toString();
     numOne = double.parse(result);
     return doesContainDecimal(result);

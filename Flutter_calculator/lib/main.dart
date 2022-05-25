@@ -213,7 +213,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
       result = '';//結果為空白
     }
     else if(btnText == '%') {
-      result = numOne / 100;
+      result =(double.parse(result) / 100).toString();
       finalResult = doesContainDecimal(result);
     } else if(btnText == '.') {
       if(!result.toString().contains('.')) {

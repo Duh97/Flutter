@@ -200,7 +200,11 @@ class IosCloneCalcState extends State<IosCloneCalc> {
       } else if( opr == 'x') {
         finalResult = mul();
       } else if( opr == '÷') {
-        finalResult = div();
+        finalResult = div();{
+          if(numTwo==0){
+            finalResult="Error";
+          }
+        }
       }
       preOpr = opr;
       opr = btnText;

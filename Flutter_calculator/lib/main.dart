@@ -50,7 +50,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
 
 
 
-  Widget btn(btnText, Color color) {
+  Widget btn(btnText, Color color) {//設定按鈕
     return Container(
         padding: EdgeInsets.only(bottom: 10.0),//讓全部按鈕間隔看起來更平均
         child: new RaisedButton(

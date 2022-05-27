@@ -119,7 +119,7 @@ class IosCloneCalcState extends State<IosCloneCalc> {
                 btn('AC',const Color(0xffa5a5a5)),//組合式AARRGGBB
                 btn('+/-',const Color(0xffa5a5a5)),
                 btn('%',const Color(0xffa5a5a5)),
-                btn('÷', Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
+                btn('/', Colors.orange),//因前面有三個同樣顏色，這裡÷就用橙色。
               ],),
             Row(//第二行
               mainAxisAlignment: MainAxisAlignment.spaceEvenly, //水平對齊，不要讓按鈕擠在一起。
@@ -183,11 +183,11 @@ class IosCloneCalcState extends State<IosCloneCalc> {
         finalResult = sub();
       } else if( preOpr == 'x') {
         finalResult = mul();
-      } else if( preOpr == '÷') {
+      } else if( preOpr == '/') {
         finalResult = div();
       }
       //當我按下"+"時，這個else if條件就會被執行，檢查是否等於"+"
-    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '÷' || btnText == '=') {
+    } else if(btnText == '+' || btnText == '-' || btnText == 'x' || btnText == '/' || btnText == '=') {
       //條件如果true，num第一次等於0，此條件就成立
       if(numOne == 0) {//檢查是否到0
         numOne = double.parse(result);
@@ -201,10 +201,11 @@ class IosCloneCalcState extends State<IosCloneCalc> {
         finalResult = sub();
       } else if( opr == 'x') {
         finalResult = mul();
-      } else if( opr == '÷') {
+      } else if( opr == '/') {
         finalResult = div();{
           if(numTwo==0){
             finalResult="Error";
+            numOne=0;
           }
         }
       }
@@ -225,8 +226,8 @@ class IosCloneCalcState extends State<IosCloneCalc> {
     else if(btnText == '+/-') {
       result.toString().startsWith('-') ? result = result.toString().substring(1): result = '-'+result.toString();
       finalResult = result;
-
     }
+
 
     else {
       result = result + btnText;
